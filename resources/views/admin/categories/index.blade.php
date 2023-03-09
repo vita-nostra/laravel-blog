@@ -27,7 +27,37 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-2">
-                    <a href="{{ route('admin.category.create') }}" class="btn btn-block btn-primary">Добавить категорию</a>
+                    <a href="{{ route('admin.category.create') }}" class="btn btn-block btn-primary mb-3">Добавить категорию</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th style="width: 10px">#</th>
+                            <th>Название категории</th>
+                            <th style="width: 100px">Действия</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($categories as $category)
+                            <tr>
+                                <td>{{ $category->id }}</td>
+                                <td>{{ $category->title }}</td>
+                                <td class="d-flex">
+                                    <a href="{{ route('admin.category.show', $category->id) }}"><i class="fas fa-eye mr-2"></i></a>
+                                    <a href="{{ route('admin.category.edit', $category->id) }}"><i class="fas fa-pen mr-3"></i></a>
+                                    <form action="{{ route('admin.category.delete', $category->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="border-0 bg-transparent text-danger"><i class="fas fa-trash" role="button"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <!-- /.row -->

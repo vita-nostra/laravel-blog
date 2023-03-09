@@ -8,13 +8,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Добавление категории</h1>
+                    <h1 class="m-0">Редактирование категории</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Главная</a></li>
                         <li class="breadcrumb-item"><a href="{{ route('admin.category.index') }}">Категории</a></li>
-                        <li class="breadcrumb-item active">Добавление категории</li>
+                        <li class="breadcrumb-item active">Редактирование категории</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -27,16 +27,17 @@
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row">
-                <form action="{{ route('admin.category.store') }}" method="POST" class="col-4">
+                <form action="{{ route('admin.category.update', $category->id) }}" method="POST" class="col-4">
                     @csrf
+                    @method('PATCH')
                     <div class="card-body">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Категория</label>
-                            <input type="text" class="form-control" name="title" id="exampleInputEmail1" placeholder="Название категории">
+                            <input type="text" class="form-control" name="title" id="exampleInputEmail1" placeholder="Название категории" value="{{ $category->title }}">
                             @error('title')
                             <div class="text-danger">Поле обязательно для заполнения</div>
                             @enderror
-                            <button type="submit" class="btn btn-primary mt-3">Добавить</button>
+                            <button type="submit" class="btn btn-primary mt-3">Обновить</button>
                         </div>
                     </div>
                     <!-- /.card-body -->
