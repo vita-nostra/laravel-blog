@@ -21,6 +21,11 @@ Route::namespace('App\Http\Controllers\Admin')->prefix('admin')->group(function 
     Route::namespace('Main')->group(function () {
         Route::get('/', IndexController::class)->name('admin.main.index');
     });
+
+    Route::namespace('Category')->prefix('categories')->group(function () {
+        Route::get('/', IndexController::class)->name('admin.category.index');
+        Route::get('/create', CreateController::class)->name('admin.category.create');
+    });
 });
 
 Auth::routes();
