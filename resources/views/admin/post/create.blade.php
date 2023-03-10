@@ -81,8 +81,17 @@
                             @error('content')
                             <div class="text-danger">Поле обязательно для заполнения</div>
                             @enderror
-                            <button type="submit" class="btn btn-primary mt-3">Добавить</button>
                         </div>
+                    <div class="form-group">
+                        <label>Выберите тэги</label>
+                        <select class="select2 select2-hidden-accessible" multiple="" name="tag_ids[]" data-placeholder="Тэги" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                            @foreach($tags as $tag)
+                                <option value="{{ $tag->id }}" {{ is_array(old('tag_ids')) && in_array($tag->id, old('tag_ids')) ? ' selected' : ''}}>
+                                    {{ $tag->title }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Добавить</button>
                     <!-- /.card-body -->
                 </form>
             </div>
