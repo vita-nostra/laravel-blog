@@ -67,6 +67,15 @@
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
+                    <div class="form-group col-6">
+                        <label>Выберите категорию</label>
+                        <select class="form-control" name="category_id">
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}" {{ $category->id == old('category_id') ? ' selected' : ''}}>
+                                {{ $category->title }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                         <div class="form-group col-12">
                             <textarea id="summernote" name="content" style="display: none;">{{ old('content') }}</textarea>
                             @error('content')
