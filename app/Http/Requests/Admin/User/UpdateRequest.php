@@ -22,12 +22,23 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'name' => 'required|string',
+            'email' => 'required|string|email|unique:users,email,'.$this->user->id,
+            'role' => 'required|integer'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
             'name.required' => 'Поле обязательно для заполнения',
             'name.string' => 'Поле обязательно должно быть строкой',
             'email.required' => 'Поле обязательно для заполнения',
             'email.string' => 'Поле обязательно должно быть строкой',
             'email.email' => 'Введите корректный email',
-            'email.unique' => 'Пользователь с данным email уже существует'
+            'email.unique' => 'Пользователь с данным email уже существует',
+            'role.required' => 'Поле обязательно для заполнения',
+            'role.integer' => 'Значение должно быть числом'
         ];
     }
 }
