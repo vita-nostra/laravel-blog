@@ -34,7 +34,7 @@
                             <label for="exampleInputEmail1">Статья</label>
                             <input type="text" class="form-control" name="title" id="exampleInputEmail1" placeholder="Название статьи" value="{{ old('title') }}">
                             @error('title')
-                            <div class="text-danger">Поле обязательно для заполнения</div>
+                            <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                     <div class="form-group col-6">
@@ -75,11 +75,14 @@
                                 {{ $category->title }}</option>
                             @endforeach
                         </select>
+                        @error('category_id')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                         <div class="form-group col-12">
                             <textarea id="summernote" name="content" style="display: none;">{{ old('content') }}</textarea>
                             @error('content')
-                            <div class="text-danger">Поле обязательно для заполнения</div>
+                            <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                     <div class="form-group">
@@ -90,6 +93,9 @@
                                     {{ $tag->title }}</option>
                             @endforeach
                         </select>
+                        @error('tag_ids')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <button type="submit" class="btn btn-primary mt-3">Добавить</button>
                     <!-- /.card-body -->
