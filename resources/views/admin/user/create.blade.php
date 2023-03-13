@@ -45,13 +45,6 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Пароль пользователя</label>
-                            <input type="text" class="form-control" name="password" id="exampleInputEmail1" placeholder="Пароль пользователя">
-                            @error('password')
-                            <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
                             <label>Выберите роль</label>
                             <select class="form-control" name="role">
                                 @foreach($roles as $id => $role)
