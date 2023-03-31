@@ -22,23 +22,38 @@
                         <button class="btn prev-post"> Предыдущая статья</button>
                         <button class="btn next-post"> Следующая статья</button>
                     </div>
-                    <div class="comment-section wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-                        <h5 class="section-title">Комментарии</h5>
-                        <form action="POST" class="oleez-comment-form">
-                            @csrf
-                            <div class="row">
-                                <div class="form-group col-12">
-                                    <label for="content">*Сообщение</label>
-                                    <textarea name="content" id="content" rows="10" class="oleez-textarea" required=""></textarea>
+                    <h5 class="section-title mb-3">Комментарии ({{ $post->comments->count() }})</h5>
+                    <div class="row">
+                        @foreach($post->comments as $comment)
+                            <div class="col-lg-12 mb-12 mb-lg-0 card-comments mt-3">
+                                <div class="card-comment" style="visibility: visible; animation-name: fadeInUp;">
+                                    <div class="comment-text">
+                                        <span class="post-category"><b>{{ $comment->user->name }}</b></span> {{ $comment->dateAsCarbon->diffForHumans() }}
+                                    </div>
+                                    <p>{{ $comment->content }}</p>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-submit">Отправить</button>
-                                </div>
-                            </div>
-                        </form>
+                        @endforeach
                     </div>
+                    @auth()
+                        <div class="comment-section wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                            <form action="{{ route('post.comment.store', $post->id) }}" method="post" class="oleez-comment-form">
+                                @csrf
+                                <div class="row">
+                                    <div class="form-group col-12">
+                                        <label for="content">*Сообщение</label>
+                                        <textarea name="content" id="content" rows="10" class="oleez-textarea" required=""></textarea>
+                                        <input type="hidden" name="post_id" value="{{ $post->id }}">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-submit">Отправить</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    @endauth
                 </div>
                 @include('layouts.sidebar')
             </div>
