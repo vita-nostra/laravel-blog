@@ -17,6 +17,23 @@ Route::namespace('App\Http\Controllers\Main')->group(function () {
     Route::get('/', IndexController::class)->name('main.index');
 });
 
+Route::namespace('App\Http\Controllers\Post')->prefix('post')->group(function () {
+    Route::get('/', IndexController::class)->name('post.index');
+    Route::get('/{post}', ShowController::class)->name('post.show');
+
+    Route::namespace('Comment')->prefix('{post}')->group(function () {
+        Route::get('/', StoreController::class)->name('post.comment.store');
+    });
+});
+
+Route::namespace('App\Http\Controllers\Tag')->prefix('tag')->group(function () {
+    Route::get('/{tag}', IndexController::class)->name('tag.index');
+});
+
+Route::namespace('App\Http\Controllers\Category')->prefix('category')->group(function () {
+    Route::get('/{category}', IndexController::class)->name('category.index');
+});
+
 Route::namespace('App\Http\Controllers\Personal')->prefix('personal')->middleware(['auth', 'verified'])->group(function () {
     Route::namespace('Main')->group(function () {
         Route::get('/', IndexController::class)->name('personal.main.index');
