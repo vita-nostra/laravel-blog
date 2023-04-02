@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Понравившиеся статьи</h1>
+                    <h1 class="m-0">Понравившиеся рецепты</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
 
@@ -27,16 +27,16 @@
                     <table class="table table-bordered">
                         <thead>
                         <tr>
-                            <th>Название статьи</th>
+                            <th>Название</th>
                             <th style="width: 100px">Действия</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($posts as $post)
                             <tr>
-                                <td>{{ $post->title }}</td>
+                                <td><a href="{{ route('post.show', $post->id) }}" target="_blank">{{ $post->title }}</a></td>
                                 <td class="d-flex">
-                                    <a href="{{ route('admin.post.show', $post->id) }}"><i class="fas fa-eye mr-2"></i></a>
+                                    <a href="{{ route('post.show', $post->id) }}" target="_blank"><i class="fas fa-eye mr-2"></i></a>
                                     <form action="{{ route('personal.liked.delete', $post->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')

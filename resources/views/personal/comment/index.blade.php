@@ -35,7 +35,7 @@
                         <tbody>
                         @foreach($comments as $comment)
                             <tr>
-                                <td><a href="{{ route('admin.post.show', $comment->post->id) }}">{{ $comment->post->title }}</a></td>
+                                <td><a href="{{ route('post.show', $comment->post->id) }}">{{ $comment->post->title }}</a></td>
                                 <td>{{ $comment->content }}</td>
                                 <td class="d-flex">
                                     <a href="{{ route('personal.comment.edit', $comment->id) }}"><i class="fas fa-pen mr-3"></i></a>

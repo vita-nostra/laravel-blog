@@ -18,8 +18,8 @@
 <div class="oleez-loader"></div>
 <header class="oleez-header">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="{{ route('main.index') }}"><img src="{{ asset('assets/images/Logo_2.svg') }}"
-                                                                      alt="Oleez"></a>
+        <a class="navbar-brand" href="{{ route('main.index') }}"><img src="{{ asset('assets/images/logo-b.png') }}"
+                                                                      alt="Tasty Finds" style="width: 200px"></a>
         <div class="collapse navbar-collapse" id="oleezMainNav">
             <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
             </ul>
@@ -73,12 +73,12 @@
         <div class="footer-content">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="{{ asset('assets/images/Logo_1.svg') }}" alt="oleez" class="footer-logo">
+                    <img src="{{ asset('assets/images/logo-l.png') }}" alt="Tasty Finds" class="footer-logo" style="width: 150px">
                 </div>
             </div>
         </div>
         <div class="footer-text">
-            <p class="mb-md-0">© 2023, Oleez Блог.</p>
+            <p class="mb-md-0">© 2023, Tasty Finds.</p>
             <p class="mb-0">Все права защищены.</p>
         </div>
     </div>

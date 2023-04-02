@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('main.index') }}" class="brand-link">
-        <img src="{{ asset('assets/images/Logo_2.svg') }}">
+        <img src="{{ asset('assets/images/logo-l.png') }}" style="width: 200px">
     </a>
 
     <!-- Sidebar -->
@@ -18,7 +18,7 @@
                 <li class="nav-item">
                     <a href="{{ route('personal.liked.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-heart"></i>
-                        <p>Понравившиеся статьи</p>
+                        <p>Понравившиеся рецепты</p>
                     </a>
                 </li>
                 <li class="nav-item">
