@@ -8,7 +8,21 @@
                 <div class="col-md-8 blog-post-wrapper">
                     <div class="post-header wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
                         <img src="{{ '/storage/' . $post->main_image }}" alt="blog post" class="post-featured-image">
+                        <div class="d-flex flex-row justify-content-between">
                         <p class="post-date">{{ $date->translatedFormat('F') }} {{ $date->day }}, {{ $date->year }}</p>
+                        @auth()
+                            <form action="{{ route('post.like.store', $post->id) }}" method="post">
+                                @csrf
+                                <button type="submit" class="border-0 bg-transparent">
+                                    @if (auth()->user()->likedPosts->contains($post->id))
+                                        <i class="fa-solid fa-heart"></i>
+                                    @else
+                                        <i class="fa-regular fa-heart"></i>
+                                    @endif
+                                </button>
+                            </form>
+                        @endauth
+                        </div>
                     </div>
                     <div class="post-content wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
                         {!! $post->content !!}

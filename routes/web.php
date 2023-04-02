@@ -24,6 +24,10 @@ Route::namespace('App\Http\Controllers\Post')->prefix('post')->group(function ()
     Route::namespace('Comment')->prefix('{post}/comments')->group(function () {
         Route::post('/', StoreController::class)->name('post.comment.store');
     });
+
+    Route::namespace('Like')->prefix('{post}/likes')->group(function () {
+        Route::post('/', StoreController::class)->name('post.like.store');
+    });
 });
 
 Route::namespace('App\Http\Controllers\Tag')->prefix('tag')->group(function () {

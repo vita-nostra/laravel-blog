@@ -13,6 +13,7 @@ class Post extends Model
 
     protected $table = 'posts';
     protected $fillable = ['title', 'content', 'preview_image', 'main_image', 'category_id'];
+    protected $withCount = ['likedUsers'];
 
     public function tags()
     {
@@ -22,5 +23,10 @@ class Post extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function likedUsers()
+    {
+        return $this->belongsToMany(User::class, 'post_user_likes', 'post_id', 'user_id');
     }
 }
